@@ -1,8 +1,3 @@
-# - node 10 required
-# - git clone {Your repo}
-# - cd frontend
-# - npm install
-# - npm start
 
 FROM node:10.0
 
