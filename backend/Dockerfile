@@ -8,6 +8,6 @@ RUN pip install pip --upgrade
 RUN pip install -r requirements.txt
 RUN python manage.py
 
-EXPOSE 3000
+EXPOSE 8000
 
 ENTRYPOINT [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
