@@ -1,9 +1,9 @@
-# Configure the AWS provider
+#################### Configure the AWS provider ####################
 provider "aws" {
   region = "us-east-1" 
 }
 
-# Create IAM users 
+#################### Create IAM users ####################
 resource "aws_iam_user" "proj_man" {
   name = "projectmanager"
   tags = {
@@ -25,7 +25,7 @@ resource "aws_iam_user" "sys_admin" {
   }
 }
 
-# Create access keys for users
+#################### Create access keys for users ####################
 resource "aws_iam_access_key" "proj_man" {
   user = aws_iam_user.proj_man.name
 }
@@ -38,7 +38,7 @@ resource "aws_iam_access_key" "sys_admin" {
   user = aws_iam_user.sys_admin.name
 }
 
-# Output access and secret keys
+#################### Output access and secret keys ####################
 output "proj_man_keys" {
   value = {
     access_key_id = aws_iam_access_key.proj_man.id
@@ -63,7 +63,7 @@ output "sys_admin_keys" {
   sensitive = true
 }
 
-# Save access keys locally 
+#################### Save access keys locally ####################
 locals {
   proj_man_csv = "access_key,secret_key\n${aws_iam_access_key.proj_man.id},${aws_iam_access_key.proj_man.secret}"
   chief_arch_csv = "access_key,secret_key\n${aws_iam_access_key.chief_arch.id},${aws_iam_access_key.chief_arch.secret}"
@@ -85,7 +85,7 @@ resource "local_file" "sys_admin_keys" {
   filename = "sys-admin-keys.csv"
 }
 
-# Create IAM Groups
+#################### Create IAM Groups ####################
 resource "aws_iam_group" "proj_man" {
   name = "project-manager"
 }
@@ -98,7 +98,7 @@ resource "aws_iam_group" "sys_admin" {
   name = "sys-admin"
 }
 
-# Add users to groups
+#################### Add users to groups ####################
 resource "aws_iam_group_membership" "project_manager" {
   name = aws_iam_user.proj_man.name
   users = [aws_iam_user.proj_man.name]
@@ -117,7 +117,7 @@ resource "aws_iam_group_membership" "sys_admin" {
   group = aws_iam_group.sys_admin.name
 }
 
-# Custom IAM policy for RDS, ECS, Fargate, EC2 resource access
+#################### Custom IAM policy for RDS, ECS, Fargate, EC2 resource access ####################
 resource "aws_iam_policy" "resource_access" {
   name        = "group_resource_access"
   description = "Access for group users"
@@ -145,7 +145,7 @@ resource "aws_iam_policy" "resource_access" {
 EOF
 }
 
-# Attach policy to groups
+#################### Attach policy to groups ####################
 resource "aws_iam_group_policy_attachment" "proj_man_attach" {
   group      = aws_iam_group.proj_man.name
   policy_arn = aws_iam_policy.resource_access.arn
@@ -161,7 +161,7 @@ resource "aws_iam_group_policy_attachment" "sys_admin_attach" {
   policy_arn = aws_iam_policy.resource_access.arn
 }
 
-# Attach IAM policies for each user
+#################### Attach IAM policies for each user ####################
 resource "aws_iam_user_policy_attachment" "proj_man_policy" {
   user       = aws_iam_user.proj_man.name
   policy_arn = "arn:aws:iam::aws:policy/job-function/ViewOnlyAccess"
