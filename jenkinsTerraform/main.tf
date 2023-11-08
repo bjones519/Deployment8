@@ -13,11 +13,11 @@ provider "aws" {
 resource "aws_instance" "deployment8_jenkins_manager" {
   ami                         = var.ami
   instance_type               = var.deployment8_instance_type
-  vpc_security_group_ids      = [aws_security_group.jenkins.id]
+  vpc_security_group_ids      = ["sg-0f9050baeba67df19"]
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = file("../initTerraform/main.tf")
+  subnet_id = "subnet-0d7c507589e661d8e"
   user_data = file("jenkins-manager-installs.sh")
   tags = {
     Name = "jenkins-manager-east"
@@ -28,14 +28,14 @@ resource "aws_instance" "deployment8_jenkins_manager" {
 resource "aws_instance" "deployment8_jenkins_agent01" {
   ami                         = var.ami
   instance_type               = var.deployment8_instance_type
-  vpc_security_group_ids      = [aws_security_group.jenkins.id]
+  vpc_security_group_ids      = [aws_security_group.jenkins_agent]
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = file("../initTerraform/main.tf")
+  subnet_id = "subnet-0d7c507589e661d8e"
   user_data = file("jenkins-agent01-installs.sh")
   tags = {
-    Name = "jenkins-manager-east"
+    Name = "jenkins-agent01-east"
   }
 
 }
@@ -44,11 +44,11 @@ resource "aws_instance" "deployment8_jenkins_agent01" {
 resource "aws_instance" "deployment8_jenkins_agent02" {
   ami                         = var.ami
   instance_type               = var.deployment8_instance_type
-  vpc_security_group_ids      = [aws_security_group.jenkins.id]
+  vpc_security_group_ids      = [aws_security_group.jenkins_agent.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = file("../initTerraform/main.tf")
+  subnet_id = "subnet-0d7c507589e661d8e"
   user_data = file("jenkins-agent02-installs.sh")
   tags = {
     Name = "jenkins-agent02-east"
@@ -85,6 +85,30 @@ resource "aws_security_group" "jenkins" {
 
   tags = {
     "sg_name" : "jenkins_sg"
+    "terraform" : "true"
+  }
+}
+
+resource "aws_security_group" "jenkins_agent" {
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "allow incoming SSH traffic"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    "sg_name" : "jenkins_agent_sg"
     "terraform" : "true"
   }
 }
