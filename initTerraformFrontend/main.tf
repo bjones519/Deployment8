@@ -1,3 +1,11 @@
+provider "aws" {
+  region     = var.deployment8_region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  # profile = "Admin"
+}
+
+
 #################### Frontend Task Definition ####################
 
 resource "aws_ecs_task_definition" "frontend_ecs_task" {
@@ -51,7 +59,7 @@ resource "aws_ecs_service" "aws-ecs-service-frontend" {
       aws_subnet.deployment8_pubsub_a.id,
       aws_subnet.deployment8_pubsub_b.id
     ]
-    assign_public_ip = false
+    assign_public_ip = true
     security_groups  = [aws_security_group.ingress_traffic_frontend.id]
   }
 
