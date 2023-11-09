@@ -71,9 +71,27 @@ resource "aws_security_group" "http_alb" {
   }
 }
 
-resource "aws_security_group" "ingress_traffic" {
+resource "aws_security_group" "ingress_traffic_frontend" {
   name        = "ingress-app"
-  description = "Allow ingress to APP"
+  description = "Allow ingress to frontend of APP"
+  vpc_id      = aws_vpc.deployment8_vpc.id
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "ingress_traffic_backend" {
+  name        = "ingress-app"
+  description = "Allow ingress to backend of APP"
   vpc_id      = aws_vpc.deployment8_vpc.id
 
   ingress {
