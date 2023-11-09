@@ -1,6 +1,9 @@
 #################### VPC ####################
 resource "aws_vpc" "deployment8_vpc" {
   cidr_block = var.deployment8_vpc_cidr
+  tags = {
+    "Name" = "deployment8-vpc"
+  }
 }
 
 output "vpc_id" {
