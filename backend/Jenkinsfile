@@ -28,7 +28,7 @@ pipeline {
      
     stage ('Build') {
       steps {
-          sh 'docker build -t bjones25/d8backend .'
+          sh 'sudo docker build -t bjones25/d8backend .'
     }
 }
      stage ('Login') {
@@ -39,7 +39,7 @@ pipeline {
 
      stage ('Push') {
         steps {
-            sh 'docker push bjones25/d8backend'
+            sh 'sudo docker push bjones25/d8backend'
   }
      }
 
