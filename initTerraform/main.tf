@@ -71,10 +71,9 @@ resource "aws_ecs_service" "aws-ecs-service-backend" {
 
   network_configuration {
     subnets = [
-      aws_subnet.deployment8_pubsub_a.id,
-      aws_subnet.deployment8_pubsub_b.id
+      aws_subnet.deployment8_pubsub_a.id
     ]
-    assign_public_ip = false
+    assign_public_ip = true
     security_groups  = [aws_security_group.ingress_traffic_backend.id]
   }
 }
