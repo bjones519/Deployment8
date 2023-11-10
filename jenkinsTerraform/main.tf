@@ -13,7 +13,7 @@ provider "aws" {
 resource "aws_instance" "deployment8_jenkins_manager" {
   ami                         = var.ami
   instance_type               = var.deployment8_instance_type
-  vpc_security_group_ids      = ["sg-0f9050baeba67df19"]
+  vpc_security_group_ids      = [aws_security_group.jenkins.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
 
