@@ -48,7 +48,7 @@ resource "aws_instance" "deployment8_jenkins_agent02" {
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = "subnet-0d7c507589e661d8e"
+  subnet_id = "subnet-0427a771f050fbb05"
   user_data = file("jenkins-agent02-installs.sh")
   tags = {
     Name = "jenkins-agent02-east"
