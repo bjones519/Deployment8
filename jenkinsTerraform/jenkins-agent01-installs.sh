@@ -2,7 +2,7 @@
 
 #################### Install Java ####################
 sudo apt-get update -y
-apt-get install -y openjdk-8-jre -y
+sudo apt-get install -y default-jre
 sudo apt-get update -y
 
 #################### Set up Docker's apt repository ####################
