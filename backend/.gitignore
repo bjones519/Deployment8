@@ -1,2 +1,21 @@
 env/
 node_modules/
+
+# Ignore sensitive files
+terraform.tfvars
+*.tfvars
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+# Ignore local .terraform directories
+**/.terraform/*
+.terraform.lock.hcl
+
+# Ignore .gitignore itself (if needed)
+.gitignore
+
+# SSH Keys
+*.pem
