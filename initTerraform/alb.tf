@@ -1,6 +1,6 @@
 #################### Port 3000 Target Group ####################
 resource "aws_lb_target_group" "frontend_retail_tg" {
-  name        = "D7-bankapp-app"
+  name        = "D8-retailapp-app"
   port        = 3000
   protocol    = "HTTP"
   target_type = "ip"
