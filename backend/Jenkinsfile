@@ -7,18 +7,24 @@ pipeline {
      
     stage ('Build') {
       steps {
+        dir('backend'){
           sh 'sudo docker build -t bjones25/d8backend .'
+        }
     }
 }
      stage ('Login') {
         steps {
-          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+          dir('backend'){
+            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+          }
       }
 }
 
      stage ('Push') {
         steps {
+          dir('backend'){
             sh 'sudo docker push bjones25/d8backend'
+          }
   }
      }
 
