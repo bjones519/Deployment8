@@ -2,7 +2,7 @@
 
 #################### Install Java ####################
 sudo apt-get update -y
-apt-get install -y openjdk-8-jre -y
+sudo apt-get install -y default-jre
 sudo apt-get update -y
 
 #################### Set up Docker's apt repository ####################
@@ -22,7 +22,7 @@ echo \
 sudo apt-get update
 
 #################### Install the Docker packages  ####################
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 #################### Verify that the Docker Engine installation is successful by running the hello-world image ####################
 sudo docker run hello-world

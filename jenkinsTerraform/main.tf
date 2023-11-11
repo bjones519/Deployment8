@@ -13,11 +13,11 @@ provider "aws" {
 resource "aws_instance" "deployment8_jenkins_manager" {
   ami                         = var.ami
   instance_type               = var.deployment8_instance_type
-  vpc_security_group_ids      = ["sg-0f9050baeba67df19"]
+  vpc_security_group_ids      = [aws_security_group.jenkins.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = "subnet-0d7c507589e661d8e"
+  subnet_id = "subnet-098c6f6d70b6fbfce"
   user_data = file("jenkins-manager-installs.sh")
   tags = {
     Name = "jenkins-manager-east"
@@ -28,11 +28,11 @@ resource "aws_instance" "deployment8_jenkins_manager" {
 resource "aws_instance" "deployment8_jenkins_agent01" {
   ami                         = var.ami
   instance_type               = var.deployment8_instance_type
-  vpc_security_group_ids      = [aws_security_group.jenkins_agent]
+  vpc_security_group_ids      = [aws_security_group.jenkins_agent.id]
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = "subnet-0d7c507589e661d8e"
+  subnet_id = "subnet-098c6f6d70b6fbfce"
   user_data = file("jenkins-agent01-installs.sh")
   tags = {
     Name = "jenkins-agent01-east"
@@ -48,7 +48,7 @@ resource "aws_instance" "deployment8_jenkins_agent02" {
   key_name                    = var.key_name
   associate_public_ip_address = true
 
-  subnet_id = "subnet-0d7c507589e661d8e"
+  subnet_id = "subnet-0427a771f050fbb05"
   user_data = file("jenkins-agent02-installs.sh")
   tags = {
     Name = "jenkins-agent02-east"
