@@ -26,7 +26,7 @@ resource "aws_cloudwatch_log_group" "retail_log_group" {
 #################### ECS Backend Task Definition ####################
 
 resource "aws_ecs_task_definition" "backend_ecs_task" {
-  family = "frontend-retail-task"
+  family = "backend-retail-task"
 
   container_definitions = <<EOF
   [
