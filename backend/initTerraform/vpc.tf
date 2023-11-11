@@ -6,9 +6,6 @@ resource "aws_vpc" "deployment8_vpc" {
   }
 }
 
-output "vpc_id" {
-  value = aws_vpc.deployment8_vpc.id
-}
 
 #################### Subnets ####################
 resource "aws_subnet" "deployment8_pubsub_a" {
