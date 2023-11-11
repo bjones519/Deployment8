@@ -1,5 +1,5 @@
 
-FROM node:10.12.0
+FROM node:10
 
 RUN git clone https://github.com/bjones519/Deployment8.git
 
