@@ -2,11 +2,9 @@
 
 #################### AWS credentials ####################
 
-variable access_key {}
-variable secret_key {}
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
 
-#################### SSH key ####################
-variable "key_name" {}
 
 #################### Regions ####################
 variable "deployment8_region" {
