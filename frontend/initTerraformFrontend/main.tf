@@ -42,14 +42,10 @@ resource "aws_ecs_task_definition" "frontend_ecs_task" {
 
 }
 
-data "aws_ecs_cluster" "aws_ecs_cluster" {
-  cluster_name = "aws_ecs_cluster"
-}
-
 #################### ECS Service Frontend ####################
 resource "aws_ecs_service" "aws-ecs-service-frontend" {
   name                 = "frontend-retailapp-ecs-service"
-  cluster              = data.aws_ecs_cluster.aws_ecs_cluster.id
+  cluster              = aws_ecs_cluster.aws_ecs_cluster.id
   task_definition      = aws_ecs_task_definition.frontend_ecs_task.arn # security group allows 3000 from ALB SG
   launch_type          = "FARGATE"
   scheduling_strategy  = "REPLICA"
