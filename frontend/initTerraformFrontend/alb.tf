@@ -29,11 +29,7 @@ resource "aws_alb" "retail_app" {
     "sg-07eca7ab18ca6e9d4"
   ]
 
-  depends_on = [aws_internet_gateway.deployment8_igw]
-}
-
-resource "aws_internet_gateway" "deployment8_igw" {
-  vpc_id = "vpc-09b5d002b7c8b6e92"
+  #depends_on = [aws_internet_gateway.deployment8_igw]
 }
 
 resource "aws_alb_listener" "frontend_retail_app_listener" {
