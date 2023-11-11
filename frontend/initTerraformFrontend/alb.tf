@@ -4,7 +4,7 @@ resource "aws_lb_target_group" "frontend_retail_tg" {
   port        = 3000
   protocol    = "HTTP"
   target_type = "ip"
-  vpc_id      = aws_vpc.deployment8_vpc.id
+  vpc_id      = "vpc-09b5d002b7c8b6e92"
 
   health_check {
     enabled = true
@@ -21,15 +21,15 @@ resource "aws_alb" "retail_app" {
   load_balancer_type = "application"
 
   subnets = [
-    aws_subnet.deployment8_pubsub_a.id,
-    aws_subnet.deployment8_pubsub_b.id
+    "subnet-00c80cf7827df5774",
+    "subnet-0df61200151e2b1cb"
   ]
 
   security_groups = [
-    aws_security_group.http_alb.id,
+    "sg-07eca7ab18ca6e9d4"
   ]
 
-  depends_on = [aws_internet_gateway.deployment8_igw]
+  depends_on = ["igw-060a2fb9a831623f2"]
 }
 
 resource "aws_alb_listener" "frontend_retail_app_listener" {

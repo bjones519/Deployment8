@@ -45,7 +45,7 @@ resource "aws_ecs_task_definition" "frontend_ecs_task" {
 #################### ECS Service Frontend ####################
 resource "aws_ecs_service" "aws-ecs-service-frontend" {
   name                 = "frontend-retailapp-ecs-service"
-  cluster              = aws_ecs_cluster.aws_ecs_cluster.id
+  cluster              = "arn:aws:ecs:us-east-1:922751287048:cluster/retail-app-cluster"
   task_definition      = aws_ecs_task_definition.frontend_ecs_task.arn # security group allows 3000 from ALB SG
   launch_type          = "FARGATE"
   scheduling_strategy  = "REPLICA"
@@ -54,11 +54,11 @@ resource "aws_ecs_service" "aws-ecs-service-frontend" {
 
   network_configuration {
     subnets = [
-      aws_subnet.deployment8_pubsub_a.id,
-      aws_subnet.deployment8_pubsub_b.id
+      "subnet-00c80cf7827df5774",
+      "subnet-0df61200151e2b1cb"
     ]
     assign_public_ip = true
-    security_groups  = [aws_security_group.ingress_traffic_frontend.id]
+    security_groups  = ["sg-0963068ecd7dfd122"]
   }
 
   load_balancer {
