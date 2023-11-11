@@ -72,10 +72,13 @@ resource "aws_security_group" "http_alb" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  tags = {
+    "Name" = "HTTP ALB ingresstraffic"
+  }
 }
 
 resource "aws_security_group" "ingress_traffic_frontend" {
-  name        = "ingress-app"
+  name        = "ingress-app-frontend"
   description = "Allow ingress to frontend of APP"
   vpc_id      = aws_vpc.deployment8_vpc.id
   ingress {
@@ -90,10 +93,13 @@ resource "aws_security_group" "ingress_traffic_frontend" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  tags = {
+    "Name" = "ingress-app-frontend-security-group"
+  }
 }
 
 resource "aws_security_group" "ingress_traffic_backend" {
-  name        = "ingress-app"
+  name        = "ingress-app-backend"
   description = "Allow ingress to backend of APP"
   vpc_id      = aws_vpc.deployment8_vpc.id
 
@@ -109,5 +115,8 @@ resource "aws_security_group" "ingress_traffic_backend" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    "Name" = "ingress-app-backend-security-group"
   }
 }
