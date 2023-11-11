@@ -54,6 +54,12 @@ resource "aws_internet_gateway" "deployment8_igw" {
   vpc_id = aws_vpc.deployment8_vpc.id
 }
 
+resource "aws_route" "public_igw" {
+  route_table_id         = aws_route_table.public.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.deployment8_igw.id
+}
+
 resource "aws_security_group" "http_alb" {
   name        = "httpalb"
   description = "HTTP ALB traffic"
