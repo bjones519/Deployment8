@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://54.91.95.93:8000",
+  "proxy": "http://10.0.1.103:8000",
   "private": true,
   "dependencies": {
     "@stripe/react-stripe-js": "^1.4.1",
@@ -9,7 +9,6 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@babel/plugin-proposal-private-property-in-object":"^7.14.5",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
@@ -25,7 +24,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
