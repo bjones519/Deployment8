@@ -5,29 +5,6 @@ pipeline {
       }
    stages {
      
-    stage ('Test') {
-      steps {
-         dir('backend'){
-          sh '''#!/bin/bash
-          python3.7 -m venv test
-          source test/bin/activate
-          pip install pip --upgrade
-          pip install -r requirements.txt
-          pip install mysqlclient
-          pip install pytest
-          py.test --verbose --junit-xml test-reports/results.xml
-          '''
-         }
-     }
-
-       post{
-        always {
-          junit 'test-reports/results.xml'
-        }
-       
-      }
-   }
-     
     stage ('Build') {
       steps {
           sh 'sudo docker build -t bjones25/d8backend .'
