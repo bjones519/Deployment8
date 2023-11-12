@@ -6,9 +6,9 @@ ________________________________________________________
 
 Deployment Contributors:
 
-Project Manager: Brittney Jones
-Chief Architect: Belinda Dunu
-System Administrator: Brittney Jones & Belinda Dunu
+**Project Manager**: Brittney Jones
+**Chief Architect**: Belinda Dunu
+**System Administrator**: Brittney Jones & Belinda Dunu
 
 ## Deployment Overview
 
@@ -61,7 +61,7 @@ In this deployment, we launched a two-tier, e-commerce application, on an AWS El
 - Maintainability with automated CI/CD deployments
 - Consistency by defining infrastructure and deployments in code
 
-## Issues Faced
+## Issues Faced:
 
 ### Insufficient Jenkins Agent Resources
 
@@ -73,15 +73,15 @@ In this deployment, we launched a two-tier, e-commerce application, on an AWS El
 
 - **Issue:** Frontend and backend unable to communicate properly.
 - **Cause:** Missing route configuration between public subnets.
-- **Resolution:** Added aws_route resource in Terraform config to enable communication.
+- **Resolution:** Added `aws_route` resource in Terraform config to enable communication.
 - **Takeaway:** Validate network connectivity between application tiers.
 
 ### Application Dependency Drift
 
 - **Issue:** Frontend running outdated Node.js version.
 - **Resolution:**
-  - Added COPY package.json in frontend Dockerfile to lock down versions.
-  - Defined babel.config.json to configure JavaScript transpilation.
+  - Added `COPY package.json` in frontend Dockerfile to lock down versions.
+  - Defined `babel.config.json` to configure JavaScript transpilation.
 - **Takeaway:** Proactively manage application dependencies and configs to prevent drift.
 
 ## Optimizations
