@@ -1,8 +1,18 @@
+
+#### November 11, 2023
+________________________________________________________	
+
 # Two-Tier Retail Banking Application Deployment
+
+Deployment Contributors:
+
+Project Manager: Brittney Jones
+Chief Architect: Belinda Dunu
+System Administrator: Brittney Jones & Belinda Dunu
 
 ## Deployment Overview
 
-In this deployment, we launched a 2-tier retail banking application using Terraform infrastructure as code (IAC) for provisioning and Jenkins for CI/CD automation. We chose this approach in order to enhance consistency, collaboration, security, and ease of maintenance compared to manual deployments.
+In this deployment, we launched a two-tier, e-commerce application, on an AWS Elastic Container Service (ECS). Using Terraform allowed us to build out our infrastructure as code (IAC) for provisioning, and Jenkins for CI/CD automation. We chose this approach to enhance consistency, collaboration, security, and ease of maintenance compared to manual deployments.
 
 ## Infrastructure Overview
 
@@ -20,29 +30,29 @@ In this deployment, we launched a 2-tier retail banking application using Terraf
 
 ## Jenkins Server Setup
 
-- Launched Ubuntu EC2 instance in public subnet
-- Installed Jenkins and created admin user account
+- Launched Ubuntu EC2 instance in the public subnet
+- Installed Jenkins and created an admin user account
 - Dedicated server for CI/CD automation
 - Enhanced security with user access controls
-- Generated SSH key pair and copied public key to app server
-  - Allows SSH access from Jenkins without password
+- Generated SSH key pair and copied the public key to the app server
+  - Allows SSH access from Jenkins without a password
 
 ## Jenkins CI/CD Pipeline
 
 - Created GitHub-integrated multibranch pipeline
 - Automates build and deploy for all branches
-- Jenkinsfile deploy stage executes setup scripts to deploy latest app code
+- Jenkinsfile deploy stage executes setup scripts to deploy the latest app code
 - Setup scripts install dependencies and start the application
-  - Contains necessary steps to deploy app
+  - Contains necessary steps to deploy the app
 
 ## Testing and Deployment
 
-- Updated HTML content in separate Git branch
+- Updated HTML content in a separate Git branch
 - Simulates code change to test pipeline
-- Ran build on new branch using Jenkinsfile
+- Ran build on a new branch using Jenkinsfile
 - Validated updated app functionality
-- Merged branch to trigger production deploy to main
-- Jenkinsfile deploys latest merged code
+- Merged branch to trigger production deployment to main
+- Jenkinsfile deploys the latest merged code
 
 ## Benefits Achieved
 
@@ -84,4 +94,4 @@ In this deployment, we launched a 2-tier retail banking application using Terraf
 
 ## Conclusion
 
-This project demonstrated using Terraform IAC and Jenkins CI/CD to deploy a 2-tier banking application on AWS. Some key benefits include improved collaboration, security, consistency, and maintainability of the deployment process. Proactively managing dependencies, resources, connectivity, and configurations is critical for smooth deployments. For future deployments, integrating Terraform with Jenkins, utilizing auto-scaling, and implementing backup/DR(disaster recovery) would further optimize the deployment architecture.
+This project demonstrated using Terraform IAC and Jenkins CI/CD to deploy a 2-tier e-commerce application on AWS. Some key benefits include improved collaboration, security, consistency, and maintainability of the deployment process. Proactively managing dependencies, resources, connectivity, and configurations is critical for smooth deployments. For future deployments, integrating Terraform with Jenkins, utilizing auto-scaling, and implementing backup/DR(disaster recovery) would further optimize the deployment architecture.
