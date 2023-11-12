@@ -8,7 +8,7 @@ resource "aws_lb_target_group" "frontend_retail_tg" {
 
   health_check {
     enabled = true
-    path    = "/"
+    path    = "/health"
   }
 
   depends_on = [aws_alb.retail_app]
