@@ -2,7 +2,7 @@
 #### November 11, 2023
 ________________________________________________________	
 
-# Two-Tier Retail Banking Application Deployment
+# Two-Tier E-Commerce Application Deployment on ECS
 
 Deployment Contributors:
 
