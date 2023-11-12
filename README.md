@@ -6,8 +6,8 @@ ________________________________________________________
 
 Deployment Contributors:
 
-**Project Manager**: Brittney Jones
-**Chief Architect**: Belinda Dunu
+**Project Manager**: Brittney Jones <br />
+**Chief Architect**: Belinda Dunu <br />
 **System Administrator**: Brittney Jones & Belinda Dunu
 
 ## Deployment Overview
