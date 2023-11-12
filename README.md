@@ -47,11 +47,11 @@ In this deployment, we launched a two-tier, e-commerce application, on an AWS El
 
 ## Testing and Deployment
 
-- Updated HTML content in a separate Git branch
-- Simulates code change to test pipeline
+- Updated files in a separate Git branch
+- Simulated code change to test pipeline
 - Ran build on a new branch using Jenkinsfile
 - Validated updated app functionality
-- Merged branch to trigger production deployment to main
+- `git add .` `git commit -m "commit message"`, `git merge main` and `git merge` branch to trigger production deployment to main
 - Jenkinsfile deploys the latest merged code
 
 ## Benefits Achieved
