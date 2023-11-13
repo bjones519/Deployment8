@@ -2,7 +2,7 @@
 
 ## Deployment Overview
 
-In this deployment, we launched a 2-tier retail banking application using Terraform infrastructure as code (IAC) for provisioning and Jenkins for CI/CD automation. We chose this approach in order to enhance consistency, collaboration, security, and ease of maintenance compared to manual deployments.
+In this deployment, we launched a 2-tier(Django and React) e-commerce application using Terraform infrastructure as code (IAC) for provisioning and Jenkins for CI/CD automation. We chose this approach in order to enhance consistency, collaboration, security, and ease of maintenance compared to manual deployments.
 
 ## Infrastructure Overview
 
@@ -42,7 +42,8 @@ In this deployment, we launched a 2-tier retail banking application using Terraf
 - Ran build on new branch using Jenkinsfile
 - Validated updated app functionality
 - Merged branch to trigger production deploy to main
-- Jenkinsfile deploys latest merged code
+- Jenkinsfile deploys latest merged code which deploys the application 
+![Application](screenshots/Screenshot%202023-11-11%20at%207.51.54%20PM.png)
 
 ## Benefits Achieved
 
@@ -74,6 +75,10 @@ In this deployment, we launched a 2-tier retail banking application using Terraf
   - Defined babel.config.json to configure JavaScript transpilation.
 - **Takeaway:** Proactively manage application dependencies and configs to prevent drift.
 
+
+## System Design
+![SystemDesign](screenshots/Screenshot%202023-11-13%20at%201.55.35%20PM.png)
+
 ## Optimizations
 
 - Integrate Terraform and Jenkins for automated infrastructure provisioning
@@ -84,4 +89,4 @@ In this deployment, we launched a 2-tier retail banking application using Terraf
 
 ## Conclusion
 
-This project demonstrated using Terraform IAC and Jenkins CI/CD to deploy a 2-tier banking application on AWS. Some key benefits include improved collaboration, security, consistency, and maintainability of the deployment process. Proactively managing dependencies, resources, connectivity, and configurations is critical for smooth deployments. For future deployments, integrating Terraform with Jenkins, utilizing auto-scaling, and implementing backup/DR(disaster recovery) would further optimize the deployment architecture.
+This project demonstrated using Terraform IAC and Jenkins CI/CD to deploy a 2-tier e-commerce application on AWS. Some key benefits include improved collaboration, security, consistency, and maintainability of the deployment process. Proactively managing dependencies, resources, connectivity, and configurations is critical for smooth deployments. For future deployments, integrating Terraform with Jenkins, utilizing auto-scaling, and implementing backup/DR(disaster recovery) would further optimize the deployment architecture.
